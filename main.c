@@ -15,5 +15,10 @@ int	main(void)
 
 	ft_strcpy(buffer, source);
 	printf("source: %s, destination: %s\n\n", source, buffer);
+
+	const char		*str1 = "joelA";
+	const char		*str2 = "joel";
+
+	printf("%s == %s: %d\n", str1, str2, ft_strcmp(str1, str2));
 	return (0);
 }
