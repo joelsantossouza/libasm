@@ -6,12 +6,12 @@
 #    By: joesanto <joesanto@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 11:27:37 by joesanto          #+#    #+#              #
-#    Updated: 2025/12/11 16:01:35 by joesanto         ###   ########.fr        #
+#    Updated: 2025/12/11 17:23:17 by joesanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libasm.a
-SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s
+SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s
 OBJS = $(SRCS:.s=.o)
 
 AR = ar rcs
