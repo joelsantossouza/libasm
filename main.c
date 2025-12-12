@@ -56,5 +56,11 @@ int	main(void)
 		printf("Readed: %.*s\n", (int)temp4, buf_read);
 	printf("bytes read: %ld\n\n", temp4);
 	printf("----------\n\n");
+
+	const char	*original = "";
+	char	*new = ft_strdup(original);
+
+	printf("original: %s\tnew: %s\n\n", original, new);
+	free(new);
 	return (0);
 }
