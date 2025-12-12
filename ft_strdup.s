@@ -1,25 +1,20 @@
-extern	__errno_location
 extern	malloc
 extern	ft_strlen
 extern	ft_strcpy
 
 global	ft_strdup
 ft_strdup:
-	mov		rbx, rdi
+	mov		r12, rdi
 	call	ft_strlen
 	mov		rdi, 1
 	add		rdi, rax
 	call	malloc WRT ..plt
 	cmp		rax, 0
-	je		handle_error
+	je		_exit
 	mov		rdi, rax
-	mov		rsi, rbx
+	mov		rsi, r12
 	call	ft_strcpy
 	ret
 
-handle_error:
-	neg		rsi
-	call	__errno_location WRT ..plt
-	mov		[rax], esi
-	xor		rax, rax
+_exit:
 	ret

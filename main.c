@@ -57,9 +57,11 @@ int	main(void)
 	printf("bytes read: %ld\n\n", temp4);
 	printf("----------\n\n");
 
-	const char	*original = "";
+	errno = 0;
+	const char	*original = "Try duplicate this";
 	char	*new = ft_strdup(original);
 
+	printf("errno: %d\n", errno);
 	printf("original: %s\tnew: %s\n\n", original, new);
 	free(new);
 	return (0);

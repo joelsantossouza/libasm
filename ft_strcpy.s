@@ -1,17 +1,16 @@
 global	ft_strcpy
 ft_strcpy:
-	xor	rcx, rcx
+	mov	rdx, rdi
 	jmp	copy
 
 copy:
-	cmp	byte [rsi + rcx], 0
+	lodsb
+	cmp	al, 0
 	je	end_copy
-	mov	al, [rsi + rcx]
-	mov	[rdi + rcx], al
-	add	rcx, 1
+	stosb
 	jmp	copy
 
 end_copy:
-	mov	byte [rdi + rcx], 0
-	mov	rax, rdi
+	mov	byte [rdi], 0
+	mov	rax, rdx
 	ret
