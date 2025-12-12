@@ -1,6 +1,6 @@
 global	ft_strcpy
 ft_strcpy:
-	mov	rdx, rdi
+	mov	rcx, rdi
 	jmp	copy
 
 copy:
@@ -12,5 +12,5 @@ copy:
 
 end_copy:
 	mov	byte [rdi], 0
-	mov	rax, rdx
+	mov	rax, rcx
 	ret
