@@ -67,7 +67,7 @@ int	main(void)
 	//printf("----------\n\n");
 	
 	char	*ascii_number = "42";
-	char	*base = "0123456789";
+	char	*base = "01234560789";
 
 	printf("Number %s in base %s = %d\n", ascii_number, base,
 		ft_atoi_base(ascii_number, base));

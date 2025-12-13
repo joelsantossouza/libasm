@@ -21,14 +21,12 @@ parse_base:			; Check if the base is valid if it is, return its size
 
 	add		cl, 9
 	mov		rdx, rax
-	call	check_repetition
-
 	inc		rax
-	jmp		parse_base
+	jmp		check_repetition
 
 check_repetition:
 	cmp		rdx, 0
-	je		return
+	je		parse_base
 	dec		rdx
 	cmp		[rsi + rdx], cl
 	je		invalid_base
