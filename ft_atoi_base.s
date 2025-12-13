@@ -5,32 +5,32 @@ ft_atoi_base:
 	ret
 
 parse_base:			; Check if the base is valid if it is, return its size
-	mov		al, [rsi + rax]
-	cmp		al, 0
+	mov		cl, [rsi + rax]
+	cmp		cl, 0
 	je		return
-	inc		rax
 
-	cmp		al, 43
+	cmp		cl, 43
 	je		invalid_base
 
-	cmp 	al, 45
+	cmp 	cl, 45
 	je		invalid_base
 
-	sub		al, 9
-	cmp		al, 4
+	sub		cl, 9
+	cmp		cl, 4
 	jle		invalid_base
 
-	add		al, 9
+	add		cl, 9
 	mov		rdx, rax
-	dec		rdx
 	call	check_repetition
+
+	inc		rax
 	jmp		parse_base
 
 check_repetition:
 	cmp		rdx, 0
 	je		return
 	dec		rdx
-	cmp		[rsi + rdx], al
+	cmp		[rsi + rdx], cl
 	je		invalid_base
 	jmp		check_repetition
 
