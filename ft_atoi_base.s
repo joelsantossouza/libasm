@@ -20,9 +20,20 @@ skip_spaces:
 	jmp	skip_spaces
 
 skip_sign:
+	mov	rcx, 1
 	cmp	byte [rdi], 43
+	je	increment_return
+	cmp byte [rdi], 45
 	jne	return
+	mov	rcx, -1
+	jmp	increment_return
 
+convert:
+	cmp		byte [rdi], 48
+	jl		return
+	cmp		byte [rdi], 57
+	jg		return
+	call	value_in_base
 
 ; BASE PARSING
 parse_base:
@@ -53,8 +64,13 @@ check_repetition:
 	je		invalid_base
 	jmp		check_repetition
 
+; UTILS
 invalid_base:
 	xor		rax, rax
+	ret
+
+increment_return:
+	inc	rdi
 	ret
 
 return:
