@@ -1,8 +1,9 @@
 global	ft_atoi_base
 ft_atoi_base:
 	xor		rax, rax
+	xor		r8, r8
 	call	parse_base
-	cmp		rax, 2
+	cmp		r8, 2
 	jb		return
 	call	skip_spaces
 	call	skip_sign
@@ -20,12 +21,12 @@ skip_spaces:
 	jmp	skip_spaces
 
 skip_sign:
-	mov	rcx, 1
+	mov	r9, 1
 	cmp	byte [rdi], 43
 	je	increment_return
 	cmp byte [rdi], 45
 	jne	return
-	mov	rcx, -1
+	mov	r9, -1
 	jmp	increment_return
 
 convert:
@@ -33,11 +34,15 @@ convert:
 	jl		return
 	cmp		byte [rdi], 57
 	jg		return
+	xor		r10, r10
 	call	value_in_base
+	mul		rax, r8
+	add		rax, r10
+	jmp		convert
 
 ; BASE PARSING
 parse_base:
-	mov	cl, [rsi + rax]
+	mov	cl, [rsi + r8]
 	cmp	cl, 0
 	je	return
 
@@ -52,21 +57,21 @@ parse_base:
 	jle	invalid_base
 
 	add	cl, 9
-	mov	rdx, rax
-	inc	rax
+	mov	rdx, r8
+	inc	r8
 	jmp	check_repetition
 
 check_repetition:
-	cmp		rdx, 0
-	je		parse_base
-	dec		rdx
-	cmp		[rsi + rdx], cl
-	je		invalid_base
-	jmp		check_repetition
+	cmp	rdx, 0
+	je	parse_base
+	dec	rdx
+	cmp	[rsi + rdx], cl
+	je	invalid_base
+	jmp	check_repetition
 
 ; UTILS
 invalid_base:
-	xor		rax, rax
+	pop
 	ret
 
 increment_return:
