@@ -8,7 +8,7 @@ ft_atoi_base:
 	call	skip_spaces
 	call	skip_sign
 	call	convert
-	mul		rcx
+	mul		r9
 	ret
 
 ; LOOPS THROUGHT STR
@@ -34,6 +34,7 @@ convert:
 	call	value_in_base
 	mul		r8
 	add		rax, r10
+	inc		rdi
 	jmp		convert
 
 value_in_base:
@@ -80,7 +81,7 @@ increment_return:
 	ret
 
 return_return:
-	sub	rsp, 8
+	add	rsp, 8
 	ret
 
 return:
