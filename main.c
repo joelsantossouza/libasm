@@ -7,7 +7,8 @@
 
 void	print_list(t_list *head)
 {
-	int	i;
+	const int	size = ft_list_size(head);
+	int			i;
 
 	i = 0;
 	while (head)
@@ -15,7 +16,7 @@ void	print_list(t_list *head)
 		printf("%d.\t\"%s\"\n", i++, (char*)head->data);
 		head = head->next;
 	}
-	printf("\n");
+	printf("--- %d ---\n\n", size);
 }
 
 void	free_list(t_list **head)
@@ -107,6 +108,9 @@ int	main(void)
 	print_list(head);
 
 	ft_list_push_front(&head, data3);
+	print_list(head);
+
+	ft_list_push_front(&head, 0);
 	print_list(head);
 
 	free_list(&head);
