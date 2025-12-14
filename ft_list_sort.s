@@ -26,6 +26,8 @@ found_min_value:
 	jmp	selection_sort_list
 
 swap:
+	mov	rdi, [r8]
+	mov	rsi, [r9]
 	mov	[r8], rsi
 	mov	[r9], rdi
 	jmp	find_minimum_value
