@@ -105,6 +105,15 @@ int	main(void)
 	ft_list_push_front(&head, data1);
 	print_list(head);
 
+	ft_list_push_front(&head, data1);
+	print_list(head);
+
+	ft_list_push_front(&head, data1);
+	print_list(head);
+
+	ft_list_push_front(&head, data1);
+	print_list(head);
+
 	ft_list_push_front(&head, data2);
 	print_list(head);
 
@@ -112,6 +121,9 @@ int	main(void)
 	print_list(head);
 
 	ft_list_sort(&head, strcmp);
+	print_list(head);
+
+	ft_list_remove_if(&head, "caralho", strcmp, 0);
 	print_list(head);
 
 	free_list(&head);

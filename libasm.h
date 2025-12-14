@@ -6,7 +6,7 @@
 /*   By: joesanto <joesanto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 14:58:54 by joesanto          #+#    #+#             */
-/*   Updated: 2025/12/14 17:43:33 by joesanto         ###   ########.fr       */
+/*   Updated: 2025/12/14 19:48:33 by joesanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ int		ft_atoi_base(char *str, char *base);
 void	ft_list_push_front(t_list **begin_list, void *data);
 int		ft_list_size(t_list *begin_list);
 void	ft_list_sort(t_list **begin_list, int (*cmp)());
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),
+			void (*free_fct)(void *));
 
 #endif
