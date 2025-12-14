@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <string.h>
 
 void	print_list(t_list *head)
 {
@@ -95,9 +96,9 @@ int	main(void)
 	//	ft_atoi_base(ascii_number, base));
 	
 	t_list	*head = NULL;
-	char	*data1 = "hello";
-	char	*data2 = ", ";
-	char	*data3 = "world";
+	char	*data1 = "caralho";
+	char	*data2 = "filho da mae";
+	char	*data3 = "ai papai";
 
 	print_list(head);
 
@@ -110,7 +111,7 @@ int	main(void)
 	ft_list_push_front(&head, data3);
 	print_list(head);
 
-	ft_list_push_front(&head, 0);
+	ft_list_sort(&head, strcmp);
 	print_list(head);
 
 	free_list(&head);
