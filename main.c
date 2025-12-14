@@ -66,7 +66,7 @@ int	main(void)
 	//free(new);
 	//printf("----------\n\n");
 	
-	char	*ascii_number = "2a";
+	char	*ascii_number = "    -2a\n";
 	char	*base = "0123456789abcdef";
 
 	printf("Number %s in base %s = %d\n", ascii_number, base,
