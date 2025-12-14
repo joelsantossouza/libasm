@@ -5,6 +5,27 @@
 #include <errno.h>
 #include <fcntl.h>
 
+void	print_list(t_list *head)
+{
+	int	i;
+
+	i = 0;
+	while (head)
+	{
+		printf("%d.\t\"%s\"\n", i++, (char*)head->data);
+		head = head->next;
+	}
+	printf("\n");
+}
+
+void	free_list(t_list **head)
+{
+	if (!*head)
+		return ;
+	free_list(&(*head)->next);
+	free(*head);
+}
+
 int	main(void)
 {
 	//const char		*str = "Hello, World!!!!!!!!!!";
@@ -66,11 +87,28 @@ int	main(void)
 	//free(new);
 	//printf("----------\n\n");
 	
-	char	*ascii_number = "    -2a\n";
-	char	*base = "0123456789abcdef";
+	//char	*ascii_number = "    -2a\n";
+	//char	*base = "0123456789abcdef";
 
-	printf("Number %s in base %s = %d\n", ascii_number, base,
-		ft_atoi_base(ascii_number, base));
+	//printf("Number %s in base %s = %d\n", ascii_number, base,
+	//	ft_atoi_base(ascii_number, base));
 	
+	t_list	*head = NULL;
+	char	*data1 = "hello";
+	char	*data2 = ", ";
+	char	*data3 = "world";
+
+	print_list(head);
+
+	ft_list_push_front(&head, data1);
+	print_list(head);
+
+	ft_list_push_front(&head, data2);
+	print_list(head);
+
+	ft_list_push_front(&head, data3);
+	print_list(head);
+
+	free_list(&head);
 	return (0);
 }
