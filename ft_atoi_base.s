@@ -14,9 +14,12 @@ ft_atoi_base:
 ; LOOPS THROUGHT STR
 skip_spaces:
 	mov	cl, [rdi]
-	sub cl, 9
-	cmp cl, 4
+	cmp	cl, 32
+	je	.increment_skip_spaces
+	sub	cl, 9
+	cmp	cl, 4
 	jg	return
+.increment_skip_spaces:
 	inc	rdi
 	jmp	skip_spaces
 
@@ -55,7 +58,10 @@ parse_base:
 	cmp	cl, 43
 	je	return_return
 
-	cmp cl, 45
+	cmp	cl, 45
+	je	return_return
+
+	cmp	cl, 32
 	je	return_return
 
 	sub	cl, 9
